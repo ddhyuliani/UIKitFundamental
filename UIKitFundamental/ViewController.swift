@@ -13,14 +13,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var originLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var cityPicker: UIPickerView!
     @IBOutlet weak var deleteButton: UIButton!
     
     var selectedMentor: MentorData? = nil
-    let city = ["Bogor", "Surabaya", "Bandung", "Pamulang", "Cirebon", "Kupang"]
-    
-    var onSave: ((MentorData) -> Void)?
-    var onDelete: ((MentorData) -> Void)?
+    let cities = ["Bogor", "Surabaya", "Bandung", "Pamulang", "Cirebon", "Kupang"]
     
     let mentorDataManager = MentorDataManager()
     
@@ -44,11 +42,15 @@ class ViewController: UIViewController {
     }
     
     private func saveMentorData() {
-        guard let name = nameField.text,
-              let city = originLabel.text
+        guard let name = nameField.text, !name.isEmpty,
+              var city = cityLabel.text
         else {
             print("Invalid input")
             return
+        }
+        
+        if city.isEmpty {
+            city = cities[0]
         }
         
         do {
@@ -57,7 +59,6 @@ class ViewController: UIViewController {
             } else { // Create new mentor
                 let newMentor = mentorDataManager.createMentor(withName: name, city: city)
                 try mentorDataManager.saveMentor(newMentor)
-                onSave?(newMentor)
             }
         } catch {
             print("Context save error")
@@ -73,7 +74,6 @@ class ViewController: UIViewController {
         if let selectedMentor = selectedMentor {
             do {
                 try mentorDataManager.deleteMentor(selectedMentor)
-                onDelete?(selectedMentor)
                 navigationController?.popViewController(animated: true)
             } catch {
                 print("Delete error")
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return city[row]
+        return cities[row]
     }
 }
 
@@ -95,11 +95,11 @@ extension ViewController: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return city.count
+        return cities.count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        originLabel.text = city[row]
+        cityLabel.text = cities[row]
     }
     
     
