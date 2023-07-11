@@ -16,10 +16,7 @@
 		9B877BEC2A5D1973000CB426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B877BEA2A5D1973000CB426 /* LaunchScreen.storyboard */; };
 		9B877BF52A5D19F7000CB426 /* MentorData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B877BF32A5D19F7000CB426 /* MentorData+CoreDataClass.swift */; };
 		9B877BF62A5D19F7000CB426 /* MentorData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B877BF42A5D19F7000CB426 /* MentorData+CoreDataProperties.swift */; };
-		9B877BF82A5D1B50000CB426 /* MentorDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B877BF72A5D1B50000CB426 /* MentorDataTableViewController.swift */; };
-		9B877BFA2A5D1BE9000CB426 /* MentorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B877BF92A5D1BE9000CB426 /* MentorTableViewCell.swift */; };
 		BCF2544F2A5D913A005E0482 /* MentorDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF2544E2A5D913A005E0482 /* MentorDataManager.swift */; };
-		BCF254512A5D9BC3005E0482 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF254502A5D9BC3005E0482 /* Identifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +31,7 @@
 		9B877BED2A5D1973000CB426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B877BF32A5D19F7000CB426 /* MentorData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MentorData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9B877BF42A5D19F7000CB426 /* MentorData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MentorData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		9B877BF72A5D1B50000CB426 /* MentorDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorDataTableViewController.swift; sourceTree = "<group>"; };
-		9B877BF92A5D1BE9000CB426 /* MentorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorTableViewCell.swift; sourceTree = "<group>"; };
 		BCF2544E2A5D913A005E0482 /* MentorDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MentorDataManager.swift; sourceTree = "<group>"; };
-		BCF254502A5D9BC3005E0482 /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +69,7 @@
 				9B877BDC2A5D1972000CB426 /* AppDelegate.swift */,
 				9B877BDE2A5D1972000CB426 /* SceneDelegate.swift */,
 				9B877BE02A5D1972000CB426 /* ViewController.swift */,
-				9B877BF72A5D1B50000CB426 /* MentorDataTableViewController.swift */,
-				9B877BF92A5D1BE9000CB426 /* MentorTableViewCell.swift */,
 				BCF2544E2A5D913A005E0482 /* MentorDataManager.swift */,
-				BCF254502A5D9BC3005E0482 /* Identifiers.swift */,
 				9B877BE22A5D1972000CB426 /* Main.storyboard */,
 				9B877BE82A5D1973000CB426 /* Assets.xcassets */,
 				9B877BEA2A5D1973000CB426 /* LaunchScreen.storyboard */,
@@ -161,13 +152,10 @@
 			files = (
 				9B877BF62A5D19F7000CB426 /* MentorData+CoreDataProperties.swift in Sources */,
 				9B877BE12A5D1972000CB426 /* ViewController.swift in Sources */,
-				9B877BF82A5D1B50000CB426 /* MentorDataTableViewController.swift in Sources */,
 				9B877BF52A5D19F7000CB426 /* MentorData+CoreDataClass.swift in Sources */,
-				9B877BFA2A5D1BE9000CB426 /* MentorTableViewCell.swift in Sources */,
 				9B877BDD2A5D1972000CB426 /* AppDelegate.swift in Sources */,
 				BCF2544F2A5D913A005E0482 /* MentorDataManager.swift in Sources */,
 				9B877BE72A5D1972000CB426 /* UIKitFundamental.xcdatamodeld in Sources */,
-				BCF254512A5D9BC3005E0482 /* Identifiers.swift in Sources */,
 				9B877BDF2A5D1972000CB426 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
