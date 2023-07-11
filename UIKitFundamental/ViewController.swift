@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var cityPicker: UIPickerView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var selectedMentor: MentorData? = nil
     let city = ["Bogor", "Surabaya", "Bandung", "Pamulang", "Cirebon", "Kupang"]
@@ -32,10 +33,17 @@ class ViewController: UIViewController {
         {
             nameField.text = selectedMentor?.name
             originLabel.text = selectedMentor?.city
+        } else {
+            deleteButton.isHidden = true
         }
     }
     
-    @IBAction func saveAction(_ sender: Any) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        saveMentorData()
+    }
+    
+    private func saveMentorData() {
         guard let name = nameField.text,
               let city = originLabel.text
         else {
@@ -51,10 +59,13 @@ class ViewController: UIViewController {
                 try mentorDataManager.saveMentor(newMentor)
                 onSave?(newMentor)
             }
-            navigationController?.popViewController(animated: true)
         } catch {
             print("Context save error")
         }
+    }
+    
+    @IBAction func saveAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     
