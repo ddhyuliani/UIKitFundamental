@@ -74,9 +74,6 @@ class MentorDataTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "editMentor", sender: self)
-//        let VC = storyboard?.instantiateViewController(withIdentifier: "detailMentor") as! ViewController
-//        VC.selectedMentor = mentor[indexPath.row]
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,12 +84,11 @@ class MentorDataTableViewController: UITableViewController {
         if(segue.identifier == "editMentor")
         {
             let indexPath = tableView.indexPathForSelectedRow!
-//            tableView.indexPathForSelectedRow
             let noteDetail = segue.destination as? ViewController
 
             let selectedNote : MentorData!
             selectedNote = nonDeletedMentor()[indexPath.row]
-            noteDetail!.selectedMentor = selectedMentor
+            noteDetail!.selectedMentor = selectedNote
             noteDetail?.paramEdit = 1
 
             tableView.deselectRow(at: indexPath, animated: true)
