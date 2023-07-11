@@ -12,39 +12,42 @@
         <!--Mentor Data-->
         <scene sceneID="Vnq-96-TCL">
             <objects>
-                <tableViewController id="tRC-yd-pwX" customClass="MentorDataTableViewController" customModule="UIKitFundamental" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="editMentor" id="tRC-yd-pwX" customClass="MentorDataTableViewController" customModule="UIKitFundamental" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="bvs-fJ-o0g">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mentorCell" rowHeight="90" id="7Ku-3v-tX1" customClass="MentorTableViewCell" customModule="UIKitFundamental" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mentorCell" editingAccessoryType="detailButton" rowHeight="100" id="7Ku-3v-tX1" customClass="MentorTableViewCell" customModule="UIKitFundamental" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ku-3v-tX1" id="ugj-NB-GdD">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbw-to-XMz">
-                                            <rect key="frame" x="20" y="11" width="336" height="29"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbw-to-XMz">
+                                            <rect key="frame" x="20" y="11" width="333" height="33.666666666666664"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Origin City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6M-BD-xaa">
-                                            <rect key="frame" x="20" y="48" width="336" height="21"/>
+                                            <rect key="frame" x="20" y="48" width="333" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Vbw-to-XMz" firstAttribute="leading" secondItem="ugj-NB-GdD" secondAttribute="leadingMargin" id="4hg-OH-SzW"/>
+                                        <constraint firstItem="Vbw-to-XMz" firstAttribute="top" secondItem="ugj-NB-GdD" secondAttribute="topMargin" id="8GG-MT-xzJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Vbw-to-XMz" secondAttribute="trailing" constant="20" id="y8O-tE-FvG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="Vbw-to-XMz" id="3VT-Lu-hHS"/>
                                     <outlet property="originCity" destination="z6M-BD-xaa" id="l2X-A4-QhS"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="editMentor" id="Fid-xC-MHd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,6 +64,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="editMentor" id="arP-i1-iVW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoI-qx-zzX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +75,7 @@
         <!--Detail-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIKitFundamental" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailMentor" id="BYZ-38-t0r" customClass="ViewController" customModule="UIKitFundamental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +155,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fid-xC-MHd"/>
+        <segue reference="arP-i1-iVW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>

@@ -10,9 +10,11 @@ import CoreData
 
 var mentor = [MentorData]()
 
-class MentorDataTableViewController: UITableViewController {
 
+class MentorDataTableViewController: UITableViewController {
+    var selectedMentor: MentorData?
     var firstLoad = true
+    var selectedIndex: Int = 0
     
     func nonDeletedMentor() -> [MentorData] {
         var noDeleteMentorList = [MentorData]()
@@ -26,8 +28,7 @@ class MentorDataTableViewController: UITableViewController {
         return noDeleteMentorList
     }
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         if(firstLoad)
         {
             firstLoad = false
@@ -50,51 +51,51 @@ class MentorDataTableViewController: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mentorCell = tableView.dequeueReusableCell(withIdentifier: "mentorCell", for: indexPath) as! MentorTableViewCell
         
         let thisData: MentorData!
         thisData = nonDeletedMentor()[indexPath.row]
-        
+
         mentorCell.nameLabel.text = thisData.name
-        mentorCell.originCity.text = thisData.city
-        
+        mentorCell.originCity.text = thisData.city ?? "no city"
         return mentorCell
+        
     }
     
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nonDeletedMentor().count
     }
     
-    override func viewDidAppear(_ animated: Bool)
-    {
+    override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "editMentor", sender: self)
+//        let VC = storyboard?.instantiateViewController(withIdentifier: "detailMentor") as! ViewController
+//        VC.selectedMentor = mentor[indexPath.row]
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "editMentor")
         {
             let indexPath = tableView.indexPathForSelectedRow!
-            
+//            tableView.indexPathForSelectedRow
             let noteDetail = segue.destination as? ViewController
-            
+
             let selectedNote : MentorData!
             selectedNote = nonDeletedMentor()[indexPath.row]
-            noteDetail!.selectedMentor = selectedNote
-            
+            noteDetail!.selectedMentor = selectedMentor
+            noteDetail?.paramEdit = 1
+
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    
-    
-
 }

@@ -15,7 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityPicker: UIPickerView!
     
     var selectedMentor: MentorData? = nil
+    var paramEdit = 0
     let city = ["Bogor", "Surabaya", "Bandung", "Pamulang", "Cirebon", "Kupang"]
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -26,6 +28,10 @@ class ViewController: UIViewController {
         {
             nameField.text = selectedMentor?.name
             originLabel.text = selectedMentor?.city
+        }
+        
+        if paramEdit == 1 {
+            editData()
         }
     }
 
@@ -97,6 +103,11 @@ class ViewController: UIViewController {
         {
             print("Fetch Failed")
         }
+    }
+    
+    func editData(){
+        nameField.text = selectedMentor?.name
+        originLabel.text = selectedMentor?.city
     }
     
 }
