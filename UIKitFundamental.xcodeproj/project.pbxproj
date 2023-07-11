@@ -72,12 +72,12 @@
 				9B877BDE2A5D1972000CB426 /* SceneDelegate.swift */,
 				9B877BE02A5D1972000CB426 /* ViewController.swift */,
 				9B877BF72A5D1B50000CB426 /* MentorDataTableViewController.swift */,
+				9B877BF92A5D1BE9000CB426 /* MentorTableViewCell.swift */,
 				9B877BE22A5D1972000CB426 /* Main.storyboard */,
 				9B877BE82A5D1973000CB426 /* Assets.xcassets */,
 				9B877BEA2A5D1973000CB426 /* LaunchScreen.storyboard */,
 				9B877BED2A5D1973000CB426 /* Info.plist */,
 				9B877BE52A5D1972000CB426 /* UIKitFundamental.xcdatamodeld */,
-				9B877BF92A5D1BE9000CB426 /* MentorTableViewCell.swift */,
 			);
 			path = UIKitFundamental;
 			sourceTree = "<group>";

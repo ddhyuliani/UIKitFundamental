@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="7Ku-3v-tX1" customClass="MentorTableViewCell" customModule="UIKitFundamental" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mentorCell" rowHeight="90" id="7Ku-3v-tX1" customClass="MentorTableViewCell" customModule="UIKitFundamental" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ku-3v-tX1" id="ugj-NB-GdD">
@@ -104,14 +104,26 @@
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxG-xB-HYa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="M5b-Hi-h5F">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="lEd-IS-C5x"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="lEd-IS-C5x">
+                            <connections>
+                                <action selector="saveAction:" destination="BYZ-38-t0r" id="6Ll-Ne-3g3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cityPicker" destination="ncE-Iq-8kk" id="NwT-xL-D5P"/>
+                        <outlet property="nameField" destination="J8U-EY-B0o" id="vD1-MP-TPr"/>
+                        <outlet property="originLabel" destination="ogL-lv-byH" id="YjW-tt-k9L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
