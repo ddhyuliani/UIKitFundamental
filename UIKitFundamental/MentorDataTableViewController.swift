@@ -8,72 +8,53 @@
 import UIKit
 import CoreData
 
-var mentor = [MentorData]()
-
 
 class MentorDataTableViewController: UITableViewController {
     var selectedMentor: MentorData?
-    var firstLoad = true
-    var selectedIndex: Int = 0
+    private var mentors = [MentorData]()
     
-    func nonDeletedMentor() -> [MentorData] {
-        var noDeleteMentorList = [MentorData]()
-        for data in mentor
-        {
-            if(data.deletedDate == nil)
-            {
-                noDeleteMentorList.append(data)
-            }
-        }
-        return noDeleteMentorList
-    }
+    let mentorDataManager = MentorDataManager()
     
     override func viewDidLoad() {
-        if(firstLoad)
-        {
-            firstLoad = false
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MentorData")
-            do {
-                let results:NSArray = try context.fetch(request) as NSArray
-                for result in results
-                {
-                    let note = result as! MentorData
-                    mentor.append(note)
-                }
+        super.viewDidLoad()
+        fetchData()
+    }
+    
+    private func fetchData() {
+        DispatchQueue.global(qos: .background).async {
+            guard let results = try? self.mentorDataManager.fetchAllMentors() else {
+                print("Failed to fetch data")
+                return
             }
-            catch
-            {
-                print("Fetch Failed")
+            self.mentors = results
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
         }
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let mentorCell = tableView.dequeueReusableCell(withIdentifier: "mentorCell", for: indexPath) as! MentorTableViewCell
+        let mentorCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.mentorCell, for: indexPath) as! MentorTableViewCell
+        let mentor = mentors[indexPath.row]
+        mentorCell.nameLabel.text = mentor.name
+        mentorCell.originCity.text = mentor.city ?? "no city"
         
-        let thisData: MentorData!
-        thisData = nonDeletedMentor()[indexPath.row]
-
-        mentorCell.nameLabel.text = thisData.name
-        mentorCell.originCity.text = thisData.city ?? "no city"
         return mentorCell
         
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nonDeletedMentor().count
+        return mentors.count
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        super.viewDidAppear(animated)
+        fetchData()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "editMentor", sender: self)
+        self.performSegue(withIdentifier: SegueIdentifier.editMentor, sender: self)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -81,16 +62,10 @@ class MentorDataTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "editMentor")
-        {
-            let indexPath = tableView.indexPathForSelectedRow!
-            let noteDetail = segue.destination as? ViewController
-
-            let selectedNote : MentorData!
-            selectedNote = nonDeletedMentor()[indexPath.row]
-            noteDetail!.selectedMentor = selectedNote
-            noteDetail?.paramEdit = 1
-
+        if segue.identifier == SegueIdentifier.editMentor,
+           let indexPath = tableView.indexPathForSelectedRow,
+           let noteDetail = segue.destination as? ViewController {
+            noteDetail.selectedMentor = mentors[indexPath.row]
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
