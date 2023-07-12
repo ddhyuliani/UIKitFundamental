@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveMentor()
+        print("viewDidAppear")
     }
     
     func saveMentor(){
@@ -78,7 +79,6 @@ class ViewController: UIViewController {
     }
     @IBAction func saveAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-//        saveMentor()
     }
 }
 
