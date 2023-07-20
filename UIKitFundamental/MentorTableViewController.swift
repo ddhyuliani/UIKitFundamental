@@ -32,11 +32,7 @@ class MentorTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchData()
-    }
-
-    
-    @IBAction func addMentor(_ sender: Any) {
-        
+        print("ini adalah viewWillAppear")
     }
     
     // MARK: - Table view data source

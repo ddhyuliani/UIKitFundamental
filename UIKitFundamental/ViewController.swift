@@ -32,18 +32,18 @@ class ViewController: UIViewController {
         } else {
             
         }
+        print("ini adalah viewDidLoad")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         saveMentor()
-        print("viewDidAppear")
+        print("ini adalah viewWillDisappear")
     }
     
     func saveMentor(){
         let name = nameTextField.text
         var city = cityLabel.text
-        let newMentor = mentorDataManager.createMentor(withName: name, city: city)
         
         if cityLabel.text == "" {
             city = cities[0]
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
             if let selectedMentor = selectedMentor {
                 try mentorDataManager.updateMentor(selectedMentor, withName: name, city: city)
             } else {
+                let newMentor = mentorDataManager.createMentor(withName: name, city: city)
                 try mentorDataManager.saveMentor(newMentor)
             }
             
@@ -71,12 +72,9 @@ class ViewController: UIViewController {
                 print("error nich")
             }
         }
-        if mentorView.backgroundColor != .red {
-            mentorView.backgroundColor = .red
-        } else {
-            mentorView.backgroundColor = .white
-        }
     }
+    
+    
     @IBAction func saveAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

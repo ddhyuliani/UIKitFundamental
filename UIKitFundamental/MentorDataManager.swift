@@ -43,6 +43,8 @@ class MentorDataManager {
         let request: NSFetchRequest<MentorData> = MentorData.fetchRequest()
         request.predicate = NSPredicate(format: "deletedDate == nil")
         let results = try context.fetch(request)
+        
+            //print(results.count)
         return results
     }
 }
